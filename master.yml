@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+
+  environment:
+    NVM_DIR: "{{ ansible_env.HOME }}/.nvm"
+    PATH: "{{ ansible_env.HOME }}/.nvm/versions/node/{{ node.version }}/bin:{{ ansible_env.PATH }}"
+
+  tasks:
+  - name: Capture base ubuntu version
+    command: lsb_release -usc
+    register: ubuntu_dist
+  - name: Initial setup
+    become: true
+    apt:
+      update_cache: yes
+      name:
+        - software-properties-common
+  - name: Enable universe repository
+    become: true
+    apt_repository:
+      repo:  deb http://archive.ubuntu.com/ubuntu {{ubuntu_dist.stdout}} universe
+      state: present
+  - include_role:
+      name: common

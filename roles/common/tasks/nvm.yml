@@ -1,0 +1,45 @@
+---
+- name: Check nvm install
+  stat: 
+    path: /home/{{ ansible_user_id }}/.nvm/nvm.sh
+  register: nvmStatus
+- name: Get nvm install script
+  get_url: 
+    url: https://raw.githubusercontent.com/creationix/nvm/{{ nvm.version  }}/install.sh 
+    dest: /tmp/nvm-install.sh
+    mode: 0740
+  when: nvmStatus.stat.exists == False
+- name: Install nvm
+  shell: /tmp/nvm-install.sh
+  args:
+    creates: /home/{{ ansible_user_id }}/.nvm/alias
+    executable: /bin/bash
+- name: Reload bashrc
+  shell: source ~/.bashrc
+  args:
+    executable: /bin/bash
+- name: Change owner of .nvm
+  file:
+    path: '{{ ansible_env.HOME }}/.nvm'
+    owner: '{{ env.user }}'
+    group: '{{ env.user }}' 
+    recurse: true
+- name: Change owner of configstore
+  file:
+    path: '{{ ansible_env.HOME }}/.config/configstore'
+    owner: '{{ env.user }}'
+    group: '{{ env.user }}' 
+    recurse: true
+- name: Install node
+  shell: . ~/.nvm/nvm.sh && nvm install node  
+  args:
+    creates: /home/{{ ansible_user_id }}/.nvm/alias
+    executable: /bin/bash
+- name: Use installed version of node
+  shell: source ~/.nvm/nvm.sh && nvm use {{ node.version }}
+  args:
+    executable: /bin/bash
+- name: Set default version of node
+  shell: source ~/.nvm/nvm.sh && nvm alias default {{ node.version }}
+  args:
+    executable: /bin/bash

@@ -1,0 +1,6 @@
+---
+- name: Install other dev packages
+  become: true
+  apt:
+    name:
+      - openjdk-8-jdk

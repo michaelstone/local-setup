@@ -1,0 +1,25 @@
+---
+- name: Symlink node binary
+  become: true
+  file:
+    src: "/home/michael/.nvm/versions/node/{{ node.version }}/bin/{{ item }}"
+    dest: "/usr/local/bin/{{ item }}"
+    state: link
+  with_items:
+    - node
+    - npm
+- name: Install JS tools
+  npm:
+    name: "{{ item }}"
+    global: true
+    state: present
+    version: latest
+  with_items:
+    - webpack
+    - karma
+- name: Elm
+  npm:
+    name: elm
+    global: true
+    state: present
+    version: latest

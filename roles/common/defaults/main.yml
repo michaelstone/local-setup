@@ -1,0 +1,6 @@
+env:
+  user: michael
+nvm:
+  version: v0.33.5
+node:
+  version: v9.0.0
