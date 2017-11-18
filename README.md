@@ -9,9 +9,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 
 2. Run provisioning script
 ```powershell
-Invoke-WebRequest -Uri https://raw.githubusercontent.com/michaelstone/local-setup/master/windows-boot
-strap.ps1 -OutFile windows-bootstrap.ps1; Start-Process powershell -Verb runAs "-NoExit -ExecutionPolicy Bypass -Command
- cd $pwd; & .\windows-bootstrap.ps1"
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/michaelstone/local-setup/master/windows-bootstrap.ps1 -OutFile windows-bootstrap.ps1; Start-Process powershell -Verb runAs "-NoExit -ExecutionPolicy Bypass -Command cd $pwd; & .\windows-bootstrap.ps1"
 ```
 
 
