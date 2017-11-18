@@ -4,6 +4,9 @@ Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1604 -OutFile .\Ubuntu.zip -Use
 Expand-Archive .\Ubuntu.zip C:\Distros\Ubuntu
 & C:\Distros\Ubuntu\ubuntu.exe
 
-# Invoke-WebRequest -Uri https://raw.githubusercontent.com/michaelstone/local-setup/master/bootstrap.sh -OutFile bootstrap.sh
+# Above command leaves the terminal at the WSL prompt
+exit 0
 
-# bash -c "./bootstrap.sh"
+# Run the ansible bootstrap
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/michaelstone/local-setup/master/bootstrap.sh -OutFile bootstrap.sh
+bash -c "./bootstrap.sh"
