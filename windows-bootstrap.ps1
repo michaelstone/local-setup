@@ -8,5 +8,7 @@ Expand-Archive .\Ubuntu.zip C:\Distros\Ubuntu
 exit 0
 
 # Run the ansible bootstrap
+# Note: there's a current issue with Bitdefender firewall blocking internet access from ubuntu on WSL
+# Fix here - https://github.com/Microsoft/WSL/issues/2360
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/michaelstone/local-setup/master/bootstrap.sh -OutFile bootstrap.sh
 bash -c "./bootstrap.sh"
