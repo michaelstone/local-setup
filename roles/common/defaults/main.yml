@@ -3,4 +3,4 @@ env:
 nvm:
   version: v0.33.5
 node:
-  version: v9.0.0
+  version: v9.2.0

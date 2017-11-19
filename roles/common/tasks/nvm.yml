@@ -14,22 +14,6 @@
   args:
     creates: /home/{{ ansible_user_id }}/.nvm/alias
     executable: /bin/bash
-- name: Reload bashrc
-  shell: source ~/.bashrc
-  args:
-    executable: /bin/bash
-- name: Change owner of .nvm
-  file:
-    path: '{{ ansible_env.HOME }}/.nvm'
-    owner: '{{ env.user }}'
-    group: '{{ env.user }}' 
-    recurse: true
-- name: Change owner of configstore
-  file:
-    path: '{{ ansible_env.HOME }}/.config/configstore'
-    owner: '{{ env.user }}'
-    group: '{{ env.user }}' 
-    recurse: true
 - name: Install node
   shell: . ~/.nvm/nvm.sh && nvm install node  
   args:
