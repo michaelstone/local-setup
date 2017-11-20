@@ -3,7 +3,7 @@
 ## Ubuntu
 
 ```bash
-wget -O - https://raw.githubusercontent.com/michaelstone/local-setup/master/ubuntu-bootstrap.sh | bash
+wget  https://raw.githubusercontent.com/michaelstone/local-setup/master/ubuntu-bootstrap.sh && chmod 744 ubuntu-bootstrap.sh && ./ubuntu-bootstrap.sh
 ```
 
 ## Windows
