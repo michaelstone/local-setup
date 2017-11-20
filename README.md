@@ -1,5 +1,11 @@
 # Usage
 
+## Ubuntu
+
+```bash
+wget -O - https://raw.githubusercontent.com/michaelstone/local-setup/master/ubuntu-bootstrap.sh | bash
+```
+
 ## Windows
 
 1. Enable WSL
