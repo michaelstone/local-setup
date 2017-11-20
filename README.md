@@ -47,7 +47,8 @@ https://unix.stackexchange.com/questions/159881/how-to-pair-bose-soundlink-bluet
 
 # Next tasks
 
-- Remove junk from tasks that was needed because I was running whole thing as sudo
+- Add winrm setup to windows-bootstrap to allow windows modules to be run
+  + http://docs.ansible.com/ansible/latest/intro_windows.html
 
 # Troubleshooting
 
