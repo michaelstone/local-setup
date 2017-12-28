@@ -12,3 +12,12 @@ exit 0
 # Fix here - https://github.com/Microsoft/WSL/issues/2360
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/michaelstone/local-setup/master/ubuntu-bootstrap.sh -OutFile bootstrap.sh
 bash -c "./bootstrap.sh"
+
+# Set up windows for receiving ansible commands
+# http://docs.ansible.com/ansible/latest/intro_windows.html
+# Run manually, untested in script
+# TODO: 
+#   - had to update execution policy
+#   - run windows-bootstrap to install ansible and pywinrm
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1 -OutFile ConfigureRemotingForAnsible.ps1
+powershell.exe -File ConfigureRemotingForAnsible.ps1
