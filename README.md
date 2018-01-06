@@ -17,6 +17,15 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 ```powershell
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/michaelstone/local-setup/master/windows-bootstrap.ps1 -OutFile windows-bootstrap.ps1; Start-Process powershell -Verb runAs "-NoExit -ExecutionPolicy Bypass -Command cd $pwd; & .\windows-bootstrap.ps1"
 ```
+#. Run ansible independently
+```bash
+ansible-playbook windows_master.yml -i HOSTS_WINDOWS.yml --vault-id @prompt
+```
+
+Notes:
+- Had to separate out ubuntu and windows master files due to create two localhost hosts
+- Had to create a local administrator account to run the winrm session against
+    + https://support.microsoft.com/en-gb/help/4026923/windows-create-a-local-user-or-administrator-account-in-windows-10
 
 
 # Things to add
@@ -47,8 +56,11 @@ https://unix.stackexchange.com/questions/159881/how-to-pair-bose-soundlink-bluet
 
 # Next tasks
 
-- Add winrm setup to windows-bootstrap to allow windows modules to be run
+- [DONE] Add winrm setup to windows-bootstrap to allow windows modules to be run
   + http://docs.ansible.com/ansible/latest/intro_windows.html
+- [DONE] Encrypt windows user/pass with ansible_vault
+- Update windows bootstrap to run ansible
+- Update windows playbook to run role to also install/update ubuntu 
 
 # Troubleshooting
 
