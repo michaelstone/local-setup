@@ -69,5 +69,8 @@ https://unix.stackexchange.com/questions/159881/how-to-pair-bose-soundlink-bluet
   + node isn't available when run as sudo - sudo doesn't load ~/profile
   + create symlink to node binary in nvm dir before running npm tasks
   + What worked: I was running ansible-playbook as sudo, left that off and set individual tasks as sudo using become and passing in -K
-- Could not get lock /var/lib/dpkg/lock
-  + something causing 
+- Error running ansible: Could not get lock /var/lib/dpkg/lock
+  + Fix 1: look for other apt or apt-get processes and kill them
+  + Fix 2: delete the lock files
+    + sudo rm /var/lib/dpkg/lock
+    + sudo dpkg --configure -a
