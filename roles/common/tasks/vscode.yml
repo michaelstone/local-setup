@@ -1,23 +1,30 @@
 ---
-- name: Check if vscode is already installed
+- name: Check if vscode repository installed
   stat:
     path: /etc/apt/sources.list.d/vscode.list
   register: vscode_repository
+
+- name: Check if vscode key exists
+  stat:
+    path: /etc/apt/trusted.gpg.d/microsoft.gpg
+  register: vscode_key
 
 - name: Get Microsoft key
   uri:
     url: https://packages.microsoft.com/keys/microsoft.asc
     return_content: yes
   register: key
-  when: vscode_repository.stat.exists == False
+  when: vscode_key.stat.exists == False
 
 - name: Convert to gpg
-  shell: {{ key.content }} | gpg --dearmor
+  become: true
+  shell: "echo \"{{ key.content }}\" | gpg --dearmor > microsoft.gpg"
   args:
     chdir: /etc/apt/trusted.gpg.d/
-  when: vscode_repository.stat.exists == False
+  when: vscode_key.stat.exists == False
 
 - name: Write vscode repository
+  become: true
   copy:
     content: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
     dest: /etc/apt/sources.list.d/vscode.list
