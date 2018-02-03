@@ -3,3 +3,4 @@
 - include_tasks: nvm.yml
 - include_tasks: web_dev.yml
 - include_tasks: other_dev.yml
+- include_tasks: vscode.yml
