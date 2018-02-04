@@ -1,0 +1,8 @@
+---
+- name: Check for intellij
+  stat:
+    path: /usr/local/bin/idea
+  register: intellij_install
+- include_tasks: intellij.yml
+  when: intellij_install.stat.exists == False
+- include_tasks: vscode.yml

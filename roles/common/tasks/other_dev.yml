@@ -4,3 +4,5 @@
   apt:
     name:
       - openjdk-8-jdk
+      - vim
+    state: present

@@ -1,0 +1,28 @@
+---
+
+- name: Check for download
+  stat: 
+    path: /tmp/intellij.tar.gz
+  register: intellij_tar
+- name: Download intellij tar
+  get_url:
+    url: "{{ intellij.path }}{{ intellij.filePrefix }}{{ intellij.version }}{{ intellij.fileSuffix }}"
+    dest: /tmp/intellij.tar.gz
+    mode: 0740
+  when: intellij_tar.stat.exists == False
+- name: Extract intellij
+  become: true
+  unarchive:
+    src: /tmp/intellij.tar.gz
+    dest: /opt
+    list_files: true
+  register: intellij_tar_contents
+
+- name: Get directory name
+  shell: "echo \"{{ intellij_tar_contents.files[0] }}\" |  awk -F '/' '{print $1}'"
+  register: dir_name
+  
+- name: Run install script
+  shell: ./idea.sh
+  args:
+    chdir: "/opt/{{ dir_name.stdout }}/bin/"

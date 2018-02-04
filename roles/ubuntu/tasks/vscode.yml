@@ -36,3 +36,16 @@
     update_cache: yes
     name: code
     state: present
+
+- name: Add extensions
+  shell: "code --install-extension {{ item }}"
+  with_items:
+    - eamodio.gitlens
+    - wayou.vscode-todo-highlight
+    - eg2.vscode-npm-script
+    - Shan.code-settings-sync
+    - rbbit.typescript-hero
+    - jasonnutter.search-node-modules
+    - jakob101.RelativePath
+    - pflannery.vscode-versionlens
+    - stringham.move-ts

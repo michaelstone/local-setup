@@ -1,0 +1,5 @@
+intellij:
+  version: 2017.3.4
+  path: https://download.jetbrains.com/idea/
+  filePrefix: ideaIC-
+  fileSuffix: -no-jdk.tar.gz

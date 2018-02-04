@@ -9,4 +9,4 @@ sudo apt-add-repository ppa:ansible/ansible
 sudo apt update
 sudo apt install ansible
 cd local-setup
-ansible-playbook master.yml -K -i HOSTS 
+ansible-playbook ubuntu_master.yml -K -i HOSTS 
