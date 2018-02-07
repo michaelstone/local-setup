@@ -36,10 +36,7 @@ Notes:
 
 # Things to add
 
-- Spotify
-
-https://www.spotify.com/uk/download/linux/ 
-
+- Chrome
 
 # Fix
 
