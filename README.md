@@ -1,5 +1,11 @@
 # Usage [complete WIP]
 
+# First steps
+
+- Set up SSH key in Github, this'll make clone repos much less hassle in the long run
+
+https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#platform-linux
+
 ## Ubuntu
 
 ```bash
@@ -33,13 +39,6 @@ Notes:
 - Spotify
 
 https://www.spotify.com/uk/download/linux/ 
-
-
-- Bluetooth
-
-Potential pairing fix
-https://askubuntu.com/questions/689281/pulseaudio-can-not-load-bluetooth-module-15-10-16-04-16-10#689297
-https://unix.stackexchange.com/questions/159881/how-to-pair-bose-soundlink-bluetooth-using-pulseaudio-in-linux-mint-debian-edi
 
 
 # Fix
