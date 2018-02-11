@@ -1,15 +1,18 @@
 ---
 - name: Snap service
+  become: true
   apt:
     name: snapd
     state: present
 
 - name: General apps from snap
+  become: true
   command: snap install {{ item }}
   with_items:
     - spotify
 
--name: Classic snaps
+- name: Classic snaps
+  become: true
   command: snap install {{ item }} --classic
   with_items:
     - skype
