@@ -12,4 +12,4 @@
   shell: dpkg-query -W -f='${Status}' vim
   register: virtualbox_install
 - include_tasks: virtualbox.yml
-  when: ""'installed' in virtualbox_install.stdout"
+  when: "'installed' in virtualbox_install.stdout"

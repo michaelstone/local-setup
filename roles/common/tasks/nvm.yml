@@ -15,9 +15,9 @@
     creates: /home/{{ ansible_user_id }}/.nvm/alias
     executable: /bin/bash
 - name: Install node
-  shell: . ~/.nvm/nvm.sh && nvm install node  
+  shell: . ~/.nvm/nvm.sh && nvm install node {{ node.version }}
   args:
-    creates: /home/{{ ansible_user_id }}/.nvm/alias
+    creates: /home/{{ ansible_user_id }}/.nvm/versions/node/{{ node.version }}
     executable: /bin/bash
 - name: Use installed version of node
   shell: source ~/.nvm/nvm.sh && nvm use {{ node.version }}

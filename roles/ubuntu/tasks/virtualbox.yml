@@ -6,7 +6,8 @@
     repo: deb https://download.virtualbox.org/virtualbox/debian {{ubuntu_dist.stdout}} contrib
 
 - name: Install key
-  apt-key: 
+  become: true
+  apt_key: 
     url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
     state: present
 

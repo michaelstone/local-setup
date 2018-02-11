@@ -2,4 +2,4 @@
 - name: Clone my repo
   git:
     repo: git@github.com:michaelstone/dotfiles.git
-    dest: ~/programming/
+    dest: ~/programming/dotfiles
