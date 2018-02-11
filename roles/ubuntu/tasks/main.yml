@@ -7,3 +7,9 @@
   when: intellij_install.stat.exists == False
 - include_tasks: vscode.yml
 - include_tasks: general.yml
+
+- name: Check for virtual box
+  shell: dpkg-query -W -f='${Status}' vim
+  register: virtualbox_install
+- include_tasks: virtualbox.yml
+  when: ""'installed' in virtualbox_install.stdout"

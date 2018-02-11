@@ -1,0 +1,21 @@
+---
+
+- name: Add virtual box repo
+  become: true
+  apt_repository:
+    repo: deb https://download.virtualbox.org/virtualbox/debian {{ubuntu_dist.stdout}} contrib
+
+- name: Get oracle key
+  get_url: 
+    url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    dest: /tmp/oracle_vbox.asc
+    mode: 0740
+
+- name: Install virtual box
+  become: true
+  apt:
+    update_cache: yes
+    name:
+      - virtualbox-5.2
+      - dkms
+    state: present
