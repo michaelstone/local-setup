@@ -44,7 +44,6 @@ Notes:
   + fix creates directory using ansible_user_id
   + split task to create alias for default node version
   + fix env variable for accessing nvm
-  + ** hard coded node version which breaks every time it's released
 - npm 
   + install latest version of npm instead of node bundled
 - node 

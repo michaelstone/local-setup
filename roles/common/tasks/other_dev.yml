@@ -6,3 +6,21 @@
       - openjdk-8-jdk
       - vim
     state: present
+
+- name: Download Rust installer
+  get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/rustup.rs
+    mode: 0740
+
+- name: Run Rust installer
+  shell: /tmp/rustup.rs -y
+
+# https://coderwall.com/p/ynvi0q/updating-path-with-ansible-system-wide
+- name: add .cargo/bin to path
+  become: true
+  lineinfile: dest=/etc/environment
+              state=present
+              backrefs=yes
+              regexp='PATH=(["]*)((?!.*?~/.cargo/bin).*?)(["]*)$'
+              line="PATH=\1\2:~/.cargo/bin\3"
