@@ -1,4 +1,4 @@
-# Usage [complete WIP]
+# Usage
 
 # First steps
 
@@ -52,9 +52,6 @@ Notes:
 
 # Next tasks
 
-- [DONE] Add winrm setup to windows-bootstrap to allow windows modules to be run
-  + http://docs.ansible.com/ansible/latest/intro_windows.html
-- [DONE] Encrypt windows user/pass with ansible_vault
 - Update windows bootstrap to run ansible
 - Update windows playbook to run role to also install/update ubuntu 
 
