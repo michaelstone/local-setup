@@ -1,5 +1,5 @@
 ---
 - name: Clone my repo
   git:
-    repo: git@github.com:michaelstone/dotfiles.git
+    repo: ssh://git@github.com:michaelstone/dotfiles.git
     dest: ~/programming/dotfiles

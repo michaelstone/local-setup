@@ -35,7 +35,7 @@
   apt:
     update_cache: yes
     name: code
-    state: present
+    state: latest
 
 - name: Add extensions
   shell: "code --install-extension {{ item }}"
@@ -50,3 +50,4 @@
     - pflannery.vscode-versionlens
     - stringham.move-ts
     - kalitaalexey.vscode-rust
+    - christian-kohler.npm-intellisense

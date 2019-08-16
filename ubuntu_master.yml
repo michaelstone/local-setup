@@ -1,10 +1,13 @@
 ---
 - hosts: localhost
 
+  vars:
+    node:
+      version: v12.7.0
+
   environment:
     NVM_DIR: "{{ ansible_env.HOME }}/.nvm"
     PATH: "{{ ansible_env.HOME }}/.nvm/versions/node/{{ node.version }}/bin:{{ ansible_env.PATH }}"
-
 
   tasks:
   - name: Capture base ubuntu version
