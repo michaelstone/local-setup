@@ -4,7 +4,7 @@ sudo apt update
 sudo apt install software-properties-common
 sudo apt install git
 cd ~
-git clone https://github.com/michaelstone/local-setup.git
+git clone git@github.com:michaelstone/local-setup.git
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt update
 sudo apt install ansible
